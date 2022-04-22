@@ -22,7 +22,7 @@ body{
     grid-template-columns: repeat(auto-fill, 265px);
    
 }
-.wrapper li{
+.wrapper>li{
     list-style-type: none;
     height: 300px;
     padding: 15px 20px 20px;
@@ -83,4 +83,10 @@ body{
 }
 .settings {
     cursor: pointer;
+    position: relative;
+}
+.settings .menu{
+    position: absolute;
+    bottom: 0;
+    border-radius: 4px;
 }
