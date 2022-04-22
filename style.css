@@ -35,7 +35,7 @@ body{
     transition:transform 0.3s ease;
    
 }
-.wrapper li:hover{
+.wrapper>li:hover{
     filter: drop-shadow(5px 5px 0 var(--border-color));
     transform: translate(-5px, -5px);
 }
@@ -92,7 +92,9 @@ body{
     position: absolute;
     bottom: 0;
     border-radius: 4px;
+    box-shadow: 0 0 6px rgba(0,0,0,0.15);
 }
 .menu li{
     height: 25px;
+
 }
