@@ -1,8 +1,46 @@
 @import url(//db.onlinewebfonts.com/c/9b06ae83a4412168ed194a8ed31218c2?family=Mabry+Pro+Medium);
 
+:root{
+    --primary-color:#0BB3A8;
+    --wrapper-color:#fff;
+    --border-color:#000;
+}
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Marby Pro",sans-serif;
+    font-family: "Mabry Pro",sans-serif;
+}
+body{
+    background-color: var(--primary-color);
+}
+/* Usage of grid. */
+.wrapper{
+    margin:50px;
+   gap: 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 265px);
+}
+.wrapper li{
+    list-style-type: none;
+    height: 250px;
+    padding: 15px 20px 20px;
+    border-radius: 5px;
+    background-color: var(--wrapper-color);
+}
+.wrapper .add-box, .icon{
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+}
+.add-box .icon{
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    font-size: 40px;
+    background-color: transparent;
+    /* border: 2px dashed var(--primary-color); */
+    color: var(--primary-color);
 }
