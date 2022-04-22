@@ -9,7 +9,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Mabry Pro",sans-serif;
+    font-family: "Mabry Pro Medium",sans-serif;
 }
 body{
     background-color: var(--primary-color);
@@ -20,13 +20,21 @@ body{
    gap: 15px;
     display: grid;
     grid-template-columns: repeat(auto-fill, 265px);
+   
 }
 .wrapper li{
     list-style-type: none;
-    height: 250px;
+    height: 300px;
     padding: 15px 20px 20px;
     border-radius: 5px;
     background-color: var(--wrapper-color);
+    border: 2px solid var(--border-color);
+    transition:transform 0.3s ease;
+   
+}
+.wrapper li:hover{
+    filter: drop-shadow(5px 5px 0 var(--border-color));
+    transform: translate(-5px, -5px);
 }
 .wrapper .add-box, .icon{
     display: flex;
@@ -43,4 +51,36 @@ body{
     background-color: transparent;
     /* border: 2px dashed var(--primary-color); */
     color: var(--primary-color);
+    cursor: pointer;
+}
+.add-box p{
+    margin-top: 10px;
+}
+.wrapper .note{
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-between;
+    flex-direction: column;
+}
+.note p{
+    font-size: 22px;
+    font-weight: 600;
+}
+.details span{
+    display: block;
+    font-size: 16px;
+    margin-top: 10px;
+    font-weight: 500;
+    line-height: 1.2rem;
+}
+.note .bottom-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 2px solid var(--border-color);
+}
+.settings {
+    cursor: pointer;
 }
