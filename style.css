@@ -5,6 +5,9 @@
     --wrapper-color:#fff;
     --border-color:#000;
 }
+*>li{
+    list-style-type: none;
+}
 *{
     margin: 0;
     padding: 0;
@@ -89,4 +92,7 @@ body{
     position: absolute;
     bottom: 0;
     border-radius: 4px;
+}
+.menu li{
+    height: 25px;
 }
