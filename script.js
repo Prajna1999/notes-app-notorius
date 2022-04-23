@@ -42,6 +42,7 @@ addBtn.addEventListener("click", (e)=>{
 
         if(!notes){
             notes=[];
+         
         }else{
             const noteInfo={
                 title:titleInfo,
@@ -52,10 +53,11 @@ addBtn.addEventListener("click", (e)=>{
             notes.push(noteInfo);
             localStorage.setItem("notearray",JSON.stringify(notes));
     
-        }
+        };
+        
       
     }
-
+    showNotes();
 
 
     
