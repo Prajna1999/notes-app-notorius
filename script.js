@@ -9,6 +9,7 @@ const addBtn=document.querySelector("#addBtn");
 const title=document.querySelector("form input");
 const desc=document.querySelector("#textarea");
 
+const notesArray=JSON.parse(localStorage.getItem("notesArray"));
 // add event listner for the popup.
 addBox.addEventListener("click", (e)=>{
     // console.log(e.target);
@@ -32,7 +33,7 @@ addBtn.addEventListener("click", (e)=>{
         const dateObj=new Date();
     
         const dateInfo={
-            month:dateObj.getMonth(),
+            month:months[dateObj.getMonth()],
             day:dateObj.getMonth(),
             year:dateObj.getFullYear()
         }
@@ -40,20 +41,17 @@ addBtn.addEventListener("click", (e)=>{
         // saving to the local storage.
         let notes=[];
 
-        if(!notes){
-            notes=[];
-         
-        }else{
+    
             const noteInfo={
-                title:titleInfo,
-                desc:descInfo,
-                dateInfo:dateInfo
+                titleInfo,
+                descInfo,
+                dateInfo:`${dateInfo.month} ${dateInfo.day}, ${dateInfo.year}`
         
             };
             notes.push(noteInfo);
-            localStorage.setItem("notearray",JSON.stringify(notes));
+            localStorage.setItem("notesArray",JSON.stringify(notes));
     
-        };
+        
         
       
     }
