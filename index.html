@@ -10,6 +10,32 @@
     <title>Notes App</title>
 </head>
 <body>
+    <!-- Pop up box -->
+    <div class="popup-box">
+        <div class="popup">
+            <div class="content">
+                <header>
+                    <p>Add a new Note</p>
+                    <i class="fa-solid fa-xmark"></i>
+                </header>
+
+                <form action="#">
+                    <div class="row title">
+                        <label for="title">Title</label>
+                        <input type="text" spellcheck="false">
+                    </div>
+                    <div class="row description">
+                        <label for="description">Description</label>
+                            <textarea spellcheck="false" cols="20">
+                                
+                            </textarea>
+                        
+                    </div>
+                    <button>Add Note</button>
+                </form>
+            </div>
+        </div>
+    </div>
     <div class="wrapper">
         <li class="add-box">
             <div class="icon"><i class="fa-solid fa-circle-plus"></i></div>
@@ -28,8 +54,8 @@
                 <div class="settings">
                     <i class="fa-solid fa-ellipsis"></i>
                     <ul class="menu">
-                        <li id="edit"><i class="fa-solid fa-pen-to-square"></i></li>
-                        <li id="delete"><i class="fa-solid fa-trash"></i></li>
+                        <li id="edit"><i class="fa-solid fa-pen-to-square"></i>Edit</li>
+                        <li id="delete"><i class="fa-solid fa-trash"></i>Delete</li>
                     </ul>
                 </div>
             </footer>
@@ -72,7 +98,7 @@
             <div class="details">
                 <p>This is a title</p>
                 <span>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, est alias culpa tenetur laborum minima facere consequuntur recusandae atque. Dolorum est exercitationem facere voluptatem, dignissimos similique! Tenetur atque sequi ut.
+                   
 
                 </span>
             </div>
