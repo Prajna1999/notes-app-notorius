@@ -26,21 +26,27 @@
                     </div>
                     <div class="row description">
                         <label for="description">Description</label>
-                            <textarea spellcheck="false" cols="20">
+                            <textarea id="textarea" spellcheck="false" style="height: 150px;">
                                 
                             </textarea>
                         
                     </div>
-                    <button>Add Note</button>
+                    <button id="addBtn">Add Note</button>
                 </form>
             </div>
         </div>
     </div>
+
+    <!-- Notes -->
     <div class="wrapper">
+        
         <li class="add-box">
-            <div class="icon"><i class="fa-solid fa-circle-plus"></i></div>
+            <div class="icon">
+                <i class="fa-solid fa-circle-plus"></i>
+            </div>
             <p>Add New Note</p>
         </li>
+
         <li class="note">
             <div class="details">
                 <p>This is a title</p>
@@ -61,7 +67,7 @@
             </footer>
         </li>
         <!-- Second Note -->
-        <li class="note">
+        <!-- <li class="note">
             <div class="details">
                 <p>This is a title</p>
                 <span>
@@ -75,9 +81,9 @@
                     <i class="fa-solid fa-ellipsis"></i>
                 </div>
             </footer>
-        </li>
+        </li> -->
         <!-- Third Note -->
-        <li class="note">
+        <!-- <li class="note">
             <div class="details">
                 <p>This is a title</p>
                 <span>
@@ -91,10 +97,10 @@
                     <i class="fa-solid fa-ellipsis"></i>
                 </div>
             </footer>
-        </li>
+        </li> -->
 
         <!-- Fourth Note -->
-        <li class="note">
+        <!-- <li class="note">
             <div class="details">
                 <p>This is a title</p>
                 <span>
@@ -108,7 +114,7 @@
                     <i class="fa-solid fa-ellipsis"></i>
                 </div>
             </footer>
-        </li>
+        </li> -->
 
     </div>
 
@@ -117,6 +123,6 @@
 
 
 
-    <script src="./script.js"></script>
+    <script type="module" src="./script.js"></script> 
 </body>
 </html>
