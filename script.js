@@ -6,8 +6,8 @@ const addBox=document.querySelector(".add-box");
 const popupBox=document.querySelector(".popup-box");
 const cancelBtn=document.querySelector(".content header i");
 const addBtn=document.querySelector("#addBtn");
-const titleInfo=document.querySelector("form input");
-const desc=document.querySelector("#textarea");
+const titleTag=document.querySelector("form input");
+const descTag=document.querySelector("#textarea");
 const popupTitle=document.querySelector(".content header p")
 const months=["January", "February", "March", "April", "May", "June", "July",
 "August", "September", "October", "November", "December"];
@@ -16,28 +16,36 @@ const months=["January", "February", "March", "April", "May", "June", "July",
 
 const notes=JSON.parse(localStorage.getItem("notes")||("[]"));
 // showNotes function
-
+// add event listner for the popup.
+addBox.addEventListener("click", (e)=>{
+    // console.log(e.target);
+    titleTag.focus();
+    popupTitle.innerText="Add a new Note";
+    addBtn.innerText="Add Note";
+    
+    popupBox.classList.add("show");
+})
 
 function showNotes(){
     // let li="";
     if(!notes) return;
     document.querySelectorAll(".note").forEach(note=>note.remove());
     notes.forEach((note,id)=>{
-      
+        // let filterDesc = note.description.replaceAll("\n", '<br/>');
         let liTag=  `<li class="note">
             <div class="details">
-                <p>${note.titleInfo}</p>
+                <p>${note.title}</p>
                 <span>
-                    ${note.descInfo}
+                    ${note.description}
                 </span>
             </div>
             <footer class="bottom-content">
-                <span>${note.dateInfo}</span>
+                <span>${note.date}</span>
                 <div class="settings">
                     
                     <i onclick="showMenu(this)" class="fa-solid fa-ellipsis"></i>
                     <ul class="menu">
-                        <li onclick="updateNote(${id},'${note.titleInfo}', '${note.descInfo}')"><i class="fa-solid fa-pen-to-square"></i>Edit</li>
+                        <li onclick="updateNote(${id},'${note.title}', '${note.description}')"><i class="fa-solid fa-pen-to-square"></i>Edit</li>
                         <li onclick="deleteNote(${id})"><i class="fa-solid fa-trash"></i>Delete</li>
                     </ul>
                 </div>
@@ -71,23 +79,19 @@ function deleteNote(noteId){
 
 function updateNote(noteId, title, description){
     addBox.click();
-    title.value = title;
-    desc.value = description;
+    titleTag.value = title;
+    descTag.value = description;
     popupTitle.innerText = "Update a Note";
     addBtn.innerText = "Update Note";
 
 }
-// add event listner for the popup.
-addBox.addEventListener("click", (e)=>{
-    // console.log(e.target);
-    popupBox.classList.add("show");
-})
+
 
 // add event listener to the cancel btn.
 cancelBtn.addEventListener("click", ()=>{
     // make the inputs clear when the user closes the btn.
-    titleInfo.value="";
-    desc.value="";
+    titleTag.value="";
+    descTag.value="";
     popupBox.classList.remove("show");
 });
 
@@ -95,27 +99,27 @@ cancelBtn.addEventListener("click", ()=>{
 // here the noteinfo will be stored in the localstorage as a notes object
 addBtn.addEventListener("click", (e)=>{
     e.preventDefault();
-    const titleInfo=titleInfo.value.trim();
-    const descInfo=desc.value.trim();
+    const title=titleTag.value.trim();
+    const description=descTag.value.trim();
     
-    if(titleInfo || descInfo){
+    if(title || description){
 
         const dateObj=new Date();
     
-        const dateInfo={
-            month:months[dateObj.getMonth()],
-            day:dateObj.getDate(),
-            year:dateObj.getFullYear()
-        }
+        
+        const month=months[dateObj.getMonth()];
+         const day=dateObj.getDate();
+          const year=dateObj.getFullYear();
+        
       
         // saving to the local storage.
      
 
     
             const noteInfo={
-                titleInfo,
-                descInfo,
-                dateInfo:`${dateInfo.month} ${dateInfo.day}, ${dateInfo.year}`
+                title,
+                description,
+                date:`${month} ${day}, ${year}`
         
             };
             notes.push(noteInfo);
