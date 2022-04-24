@@ -20,7 +20,7 @@ function showNotes(){
     if(!notes) return;
     document.querySelectorAll(".note").forEach(note=>note.remove());
     notes.forEach((note,id)=>{
-
+      
         let liTag=  `<li class="note">
             <div class="details">
                 <p>${note.titleInfo}</p>
@@ -31,9 +31,10 @@ function showNotes(){
             <footer class="bottom-content">
                 <span>${note.dateInfo}</span>
                 <div class="settings">
+                    
                     <i onclick="showMenu(this)" class="fa-solid fa-ellipsis"></i>
                     <ul class="menu">
-                        <li id="edit"><i class="fa-solid fa-pen-to-square"></i>Edit</li>
+                        <li onclick="dosomething(this)" id="edit"><i class="fa-solid fa-pen-to-square"></i>Edit</li>
                         <li id="delete"><i class="fa-solid fa-trash"></i>Delete</li>
                     </ul>
                 </div>
@@ -41,16 +42,18 @@ function showNotes(){
         </li>`;
 
         addBox.insertAdjacentHTML("afterend", liTag);
-
     });
+
+    
+
 }
+
+
+
+
 
 
 showNotes();
-function showMenu(elem){
-    console.log(elem);
-}
-
 
 // add event listner for the popup.
 addBox.addEventListener("click", (e)=>{
