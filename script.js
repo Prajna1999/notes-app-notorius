@@ -9,7 +9,9 @@ const addBtn=document.querySelector("#addBtn");
 const title=document.querySelector("form input");
 const desc=document.querySelector("#textarea");
 
-const notesArray=JSON.parse(localStorage.getItem("notesArray"));
+// parsing the array if it already exist or passing an empty array.
+
+const notesArray=JSON.parse(localStorage.getItem("notesArray")||("[]"));
 // add event listner for the popup.
 addBox.addEventListener("click", (e)=>{
     // console.log(e.target);
