@@ -11,7 +11,7 @@ const desc=document.querySelector("#textarea");
 
 // parsing the array if it already exist or passing an empty array.
 
-const notesArray=JSON.parse(localStorage.getItem("notesArray")||("[]"));
+const notes=JSON.parse(localStorage.getItem("notes")||("[]"));
 // add event listner for the popup.
 addBox.addEventListener("click", (e)=>{
     // console.log(e.target);
@@ -41,7 +41,7 @@ addBtn.addEventListener("click", (e)=>{
         }
       
         // saving to the local storage.
-        let notes=[];
+     
 
     
             const noteInfo={
@@ -51,13 +51,15 @@ addBtn.addEventListener("click", (e)=>{
         
             };
             notes.push(noteInfo);
-            localStorage.setItem("notesArray",JSON.stringify(notes));
+            localStorage.setItem("notes",JSON.stringify(notes));
     
-        
+            console.log(notes);
         
       
     }
-    showNotes();
+    cancelBtn.click();
+   
+    // showNotes();
 
 
     
