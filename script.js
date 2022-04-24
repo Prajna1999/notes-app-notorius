@@ -14,6 +14,7 @@ const desc=document.querySelector("#textarea");
 const notes=JSON.parse(localStorage.getItem("notes")||("[]"));
 // showNotes function
 
+
 function showNotes(){
     // let li="";
     if(!notes) return;
@@ -30,7 +31,7 @@ function showNotes(){
             <footer class="bottom-content">
                 <span>${note.dateInfo}</span>
                 <div class="settings">
-                    <i id="ellipsis" class="fa-solid fa-ellipsis"></i>
+                    <i onclick="showMenu(this)" class="fa-solid fa-ellipsis"></i>
                     <ul class="menu">
                         <li id="edit"><i class="fa-solid fa-pen-to-square"></i>Edit</li>
                         <li id="delete"><i class="fa-solid fa-trash"></i>Delete</li>
@@ -46,12 +47,11 @@ function showNotes(){
 
 
 showNotes();
-document.addEventListener("click", (e)=>{
-    if(e.target && e.target.id=="ellipsis"){
-        // document.querySelector("#1").classList.add("show");
-        console.log(e.target)
-    }
-})
+function showMenu(elem){
+    console.log(elem);
+}
+
+
 // add event listner for the popup.
 addBox.addEventListener("click", (e)=>{
     // console.log(e.target);
