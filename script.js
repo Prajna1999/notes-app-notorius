@@ -133,10 +133,10 @@ addBtn.addEventListener("click", (e)=>{
                 notes.push(noteInfo);
                 // console.log(isUpdated);
             }else{
-                
+                isUpdated=false;
                 notes[updateId]=noteInfo; //updating specified note.
                 console.log(isUpdated);
-                isUpdated=false;
+               
 
                 
             }
