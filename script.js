@@ -12,6 +12,46 @@ const desc=document.querySelector("#textarea");
 // parsing the array if it already exist or passing an empty array.
 
 const notes=JSON.parse(localStorage.getItem("notes")||("[]"));
+// showNotes function
+
+function showNotes(){
+    // let li="";
+    if(!notes) return;
+    document.querySelectorAll(".note").forEach(note=>note.remove());
+    notes.forEach((note,id)=>{
+
+        let liTag=  `<li class="note">
+            <div class="details">
+                <p>${note.titleInfo}</p>
+                <span>
+                    ${note.descInfo}
+                </span>
+            </div>
+            <footer class="bottom-content">
+                <span>${note.dateInfo}</span>
+                <div class="settings">
+                    <i id="ellipsis" class="fa-solid fa-ellipsis"></i>
+                    <ul class="menu">
+                        <li id="edit"><i class="fa-solid fa-pen-to-square"></i>Edit</li>
+                        <li id="delete"><i class="fa-solid fa-trash"></i>Delete</li>
+                    </ul>
+                </div>
+            </footer>
+        </li>`;
+
+        addBox.insertAdjacentHTML("afterend", liTag);
+
+    });
+}
+
+
+showNotes();
+document.addEventListener("click", (e)=>{
+    if(e.target && e.target.id=="ellipsis"){
+        // document.querySelector("#1").classList.add("show");
+        console.log(e.target)
+    }
+})
 // add event listner for the popup.
 addBox.addEventListener("click", (e)=>{
     // console.log(e.target);
@@ -20,6 +60,9 @@ addBox.addEventListener("click", (e)=>{
 
 // add event listener to the cancel btn.
 cancelBtn.addEventListener("click", ()=>{
+    // make the inputs clear when the user closes the btn.
+    title.value="";
+    desc.value="";
     popupBox.classList.remove("show");
 });
 
@@ -36,7 +79,7 @@ addBtn.addEventListener("click", (e)=>{
     
         const dateInfo={
             month:months[dateObj.getMonth()],
-            day:dateObj.getMonth(),
+            day:dateObj.getDate(),
             year:dateObj.getFullYear()
         }
       
@@ -54,12 +97,13 @@ addBtn.addEventListener("click", (e)=>{
             localStorage.setItem("notes",JSON.stringify(notes));
     
             console.log(notes);
-        
+            // onclicking add note, the popup box closes.
+            cancelBtn.click();
       
     }
-    cancelBtn.click();
+    
    
-    // showNotes();
+    showNotes();
 
 
     
