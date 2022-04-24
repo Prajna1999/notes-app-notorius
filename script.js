@@ -1,13 +1,16 @@
 
-import  {months} from "./months.js";
+
 
 // grab the elements of the dom.
 const addBox=document.querySelector(".add-box");
 const popupBox=document.querySelector(".popup-box");
 const cancelBtn=document.querySelector(".content header i");
 const addBtn=document.querySelector("#addBtn");
-const title=document.querySelector("form input");
+const titleInfo=document.querySelector("form input");
 const desc=document.querySelector("#textarea");
+const popupTitle=document.querySelector(".content header p")
+const months=["January", "February", "March", "April", "May", "June", "July",
+"August", "September", "October", "November", "December"];
 
 // parsing the array if it already exist or passing an empty array.
 
@@ -34,8 +37,8 @@ function showNotes(){
                     
                     <i onclick="showMenu(this)" class="fa-solid fa-ellipsis"></i>
                     <ul class="menu">
-                        <li onclick="dosomething(this)" id="edit"><i class="fa-solid fa-pen-to-square"></i>Edit</li>
-                        <li id="delete"><i class="fa-solid fa-trash"></i>Delete</li>
+                        <li onclick="updateNote(${id},'${note.titleInfo}', '${note.descInfo}')"><i class="fa-solid fa-pen-to-square"></i>Edit</li>
+                        <li onclick="deleteNote(${id})"><i class="fa-solid fa-trash"></i>Delete</li>
                     </ul>
                 </div>
             </footer>
@@ -47,14 +50,33 @@ function showNotes(){
     
 
 }
-
-
-
-
-
-
 showNotes();
+function showMenu(elem){
+    // console.log(elem.parentElement);
+    elem.parentElement.classList.add("show");
 
+    document.addEventListener("click", (e)=>{
+        if(e.target.tagName!=="I" || e.target!==elem){
+            elem.parentElement.classList.remove("show");
+        }
+    })
+}
+
+function deleteNote(noteId){
+    notes.splice(noteId,1);
+    // update the notes array too.
+    localStorage.setItem("notes", JSON.stringify(notes));
+    showNotes();
+}
+
+function updateNote(noteId, title, description){
+    addBox.click();
+    title.value = title;
+    desc.value = description;
+    popupTitle.innerText = "Update a Note";
+    addBtn.innerText = "Update Note";
+
+}
 // add event listner for the popup.
 addBox.addEventListener("click", (e)=>{
     // console.log(e.target);
@@ -64,7 +86,7 @@ addBox.addEventListener("click", (e)=>{
 // add event listener to the cancel btn.
 cancelBtn.addEventListener("click", ()=>{
     // make the inputs clear when the user closes the btn.
-    title.value="";
+    titleInfo.value="";
     desc.value="";
     popupBox.classList.remove("show");
 });
@@ -73,7 +95,7 @@ cancelBtn.addEventListener("click", ()=>{
 // here the noteinfo will be stored in the localstorage as a notes object
 addBtn.addEventListener("click", (e)=>{
     e.preventDefault();
-    const titleInfo=title.value.trim();
+    const titleInfo=titleInfo.value.trim();
     const descInfo=desc.value.trim();
     
     if(titleInfo || descInfo){
