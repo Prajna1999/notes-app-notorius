@@ -12,6 +12,8 @@ const popupTitle=document.querySelector(".content header p")
 const months=["January", "February", "March", "April", "May", "June", "July",
 "August", "September", "October", "November", "December"];
 
+let isUpdated=false;
+let updateId;
 // parsing the array if it already exist or passing an empty array.
 
 const notes=JSON.parse(localStorage.getItem("notes")||("[]"));
@@ -71,6 +73,8 @@ function showMenu(elem){
 }
 
 function deleteNote(noteId){
+    const confirmDel=confirm("Are you sure you want to delete?");
+    if(!confirmDel) return;
     notes.splice(noteId,1);
     // update the notes array too.
     localStorage.setItem("notes", JSON.stringify(notes));
@@ -78,11 +82,14 @@ function deleteNote(noteId){
 }
 
 function updateNote(noteId, title, description){
+    isUpdated=false;
+    updateId=noteId;
     addBox.click();
     titleTag.value = title;
     descTag.value = description;
     popupTitle.innerText = "Update a Note";
     addBtn.innerText = "Update Note";
+    
 
 }
 
@@ -122,7 +129,18 @@ addBtn.addEventListener("click", (e)=>{
                 date:`${month} ${day}, ${year}`
         
             };
-            notes.push(noteInfo);
+            if(!isUpdated){
+                notes.push(noteInfo);
+                // console.log(isUpdated);
+            }else{
+                
+                notes[updateId]=noteInfo; //updating specified note.
+                console.log(isUpdated);
+                isUpdated=false;
+
+                
+            }
+           
             localStorage.setItem("notes",JSON.stringify(notes));
     
             console.log(notes);
